@@ -1,19 +1,35 @@
 <template>
   <view class="container">
-    <view class="intro">本项目已包含uni ui组件，无需import和注册，可直接使用。在代码区键入字母u，即可通过代码助手列出所有可用组件。光标置于组件名称处按F1，即可查看组件文档。</view>
-    <text class="intro">详见：</text>
-	<text :show="systemStore.isLoading">{{title}}</text>
+    <view class="intro">首页</view>
+    	<swiper class="carousel" circular @change="swiperChange">
+				<swiper-item v-for="(item, index) in carouselList" :key="index" class="carousel-item">
+					<image :src="item.src" />
+				</swiper-item>
+			</swiper>
+   
   {{systemStore.isLoading}}
-    <uni-link :href="href" :text="href"></uni-link>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-  import { systemStoreWithOut } from '@/stores/modules/system';
-const href = ref('https://uniapp.dcloud.io/component/README?id=uniui')
-const title = ref('2222')
-  const systemStore = systemStoreWithOut();
+import { systemStoreWithOut } from '@/stores/modules/system';
+const swiperChange =()=>{
+
+}
+const systemStore = systemStoreWithOut();
+const carouselList = [{
+		src: "/static/banner3.jpg",
+		background: "rgb(203, 87, 60)",
+	},
+	{
+		src: "/static/banner2.jpg",
+		background: "rgb(205, 215, 218)",
+	},
+	{
+		src: "/static/banner1.jpg",
+		background: "rgb(183, 73, 69)",
+	}
+]
 </script>
 
 <style>

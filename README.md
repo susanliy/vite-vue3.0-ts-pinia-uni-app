@@ -35,3 +35,12 @@ npm run build:%PLATFORM%
 | quickapp-webview        | 快应用(webview)                                              |
 | quickapp-webview-union  | 快应用联盟                                                   |
 | quickapp-webview-huawei | 快应用华为                                                   |
+
+
+参考的git：
+https://ext.dcloud.net.cn/plugin?id=200
+https://github.com/stavyan/TinyShop-UniApp
+https://github.com/kuizuo/vite-vue3-uniapp
+
+TODO:
+1.移除uni_modules目录规范 
