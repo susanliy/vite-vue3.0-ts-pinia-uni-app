@@ -9,7 +9,23 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true,
+								"app-plus": {
+									"pullToRefresh":{
+										"support": true,
+										"color":"#ff3333",
+										"style": "default",
+								    "contentdown": {
+											"caption": "下拉可刷新自定义文本"
+									},
+									"contentover": {
+											"caption": "释放可刷新自定义文本"
+									},
+									"contentrefresh": {
+											"caption": "正在刷新自定义文本"
+									}
+									}
+								}
             }
             
         }
