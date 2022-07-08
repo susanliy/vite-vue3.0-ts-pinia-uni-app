@@ -7,13 +7,20 @@
 				</swiper-item>
 			</swiper>
    
-  {{systemStore.isLoading}}
+  {{systemStore.loadNumber}}
+	<button
+		hover-class="button-hover"
+		@click="systemStore.addLoadNumber()"
+	>
+		调用pinia
+	</button>
+
 	<navigator
 		url="/subpages/subTest/subTest"
-		open-type="navigate"
+		animation-duration='300'	open-type="navigate"
 		hover-class="navigator-hover"
-	>	<button>跳转分包</button>
-		
+	>	
+	<button>跳转分包</button>
 	</navigator>
 
   </view>
@@ -22,10 +29,13 @@
 <script setup lang="ts">
 import { getGoodsList } from '@/api/test';
 import { systemStoreWithOut } from '@/stores/modules/system';
-getGoodsList()
+import { onMounted } from 'vue';
 const swiperChange =()=>{
 
 }
+onMounted(() => {
+	getGoodsList()
+})
 const systemStore = systemStoreWithOut();
 const carouselList = [{
 		src: "/static/banner3.jpg",
