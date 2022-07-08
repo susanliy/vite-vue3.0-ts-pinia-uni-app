@@ -45,3 +45,4 @@ https://github.com/kuizuo/vite-vue3-uniapp
 TODO:
 1.移除uni_modules目录规范 
 2.http请求：luch-request
+3.分包的使用
