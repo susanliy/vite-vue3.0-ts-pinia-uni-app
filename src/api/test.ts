@@ -9,8 +9,6 @@
  * 查询商品列表
  * @param {Object} params - 查询参数  
  */
-export const getGoodsList = (params) => {
-  return http.get('/api/user/list', {
-    params
-  })
+export const getGoodsList = () => {
+  return http.post('/api/p-zdh/uct/all-courses/by-live')
 }

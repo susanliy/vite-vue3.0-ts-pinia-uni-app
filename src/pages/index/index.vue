@@ -12,7 +12,9 @@
 </template>
 
 <script setup lang="ts">
+import { getGoodsList } from '@/api/test';
 import { systemStoreWithOut } from '@/stores/modules/system';
+getGoodsList()
 const swiperChange =()=>{
 
 }

@@ -9,8 +9,10 @@
  * HBuilderX: beat-3.0.4 alpha-3.0.4
  */
 
- import { ContentTypeEnum } from '@/enums/httpEnum'
+ import { ContentTypeEnum, HTTP } from '@/enums/httpEnum'
 import Request from '@/utils/luch-request/index.js'
+import checkStatus from './checkStatus'
+import transformResult from './transformResult'
 
 
  const getTokenStorage = () => {
@@ -23,11 +25,10 @@ import Request from '@/utils/luch-request/index.js'
  }
 
  
- //根据wap进行派配置
+
  const http = new Request()
  http.setConfig((config) => { /* 设置全局配置 */
- console.log('config',config);
-   config.baseURL = 'http://test.com' /* 根域名不同 */
+   config.baseURL = HTTP.BASEURL_DEV /* 根域名不同 */
    config.header = {
      ...config.header,
      'Content-Type': ContentTypeEnum.JSON 
@@ -53,10 +54,14 @@ import Request from '@/utils/luch-request/index.js'
  
  
  http.interceptors.response.use(async (response) => { /* 请求之后拦截器(响应)。可以使用async await 做异步操作  */
-   // if (response.data.code !== 200) { // 服务端返回的状态码不等于200，则reject()
-   //   return Promise.reject(response)
-   // }
-   return response
+ const { statusCode, data } = response;
+ if (statusCode !== 200) { // 服务端返回的状态码不等于200，则reject()
+    checkStatus(statusCode);
+    throw new Error('http请求错误');
+   } 
+   // 处理接口返回结果
+   const result = transformResult(data);
+   return result;
  }, (response) => { // 请求错误做点什么。可以使用async await 做异步操作
    console.log(response)
    return Promise.reject(response)
