@@ -4,50 +4,52 @@
 		"style": {
 			"navigationBarTitleText": "uni-app"
 		}
-	}    ,{
-            "path" : "pages/category/category",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": true,
-								"app-plus": {
-									"pullToRefresh":{
-										"support": true,
-										"color":"#ff3333",
-										"style": "default",
-								    "contentdown": {
-											"caption": "下拉可刷新自定义文本"
-									},
-									"contentover": {
-											"caption": "释放可刷新自定义文本"
-									},
-									"contentrefresh": {
-											"caption": "正在刷新自定义文本"
-									}
-									}
-								}
-            }
-            
-        }
-        ,{
-            "path" : "pages/cart/cart",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/user/user",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	}, {
+		"path": "pages/category/category",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": true,
+			"app-plus": {
+				"pullToRefresh": {
+					"support": true,
+					"color": "#ff3333",
+					"style": "default",
+					"contentdown": {
+						"caption": "下拉可刷新自定义文本"
+					},
+					"contentover": {
+						"caption": "释放可刷新自定义文本"
+					},
+					"contentrefresh": {
+						"caption": "正在刷新自定义文本"
+					}
+				}
+			}
+		}
+	}, {
+		"path": "pages/cart/cart",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "pages/user/user",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}],
+	"subPackages": [{
+		"root": "subpages",
+		"pages": [{
+			"path": "subTest/subTest",
+		"style": {
+			"navigationBarTitleText": "子页面",
+			"enablePullDownRefresh": false
+		}
+		}]
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -57,7 +59,7 @@
 			"background": "#efeff4"
 		}
 	},
-	"tabBar":{
+	"tabBar": {
 		"color": "#C0C4CC",
 		"selectedColor": "#fa436a",
 		"borderStyle": "black",

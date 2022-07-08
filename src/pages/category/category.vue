@@ -4,15 +4,9 @@
 	</view>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 //使用插件---去官网下载插件，然后可以看对应的文档进行使用
-	export default {
-		data() {
-			return {
-				
-			};
-		}
-	}
+ const back =()=>{}
 </script>
 
 <style>

@@ -8,6 +8,14 @@
 			</swiper>
    
   {{systemStore.isLoading}}
+	<navigator
+		url="/subpages/subTest/subTest"
+		open-type="navigate"
+		hover-class="navigator-hover"
+	>	<button>跳转分包</button>
+		
+	</navigator>
+
   </view>
 </template>
 
