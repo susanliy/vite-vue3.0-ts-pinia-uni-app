@@ -46,3 +46,5 @@ TODO:
 1.移除uni_modules目录规范 
 2.http请求：luch-request
 3.分包的使用
+
+4.全局调用

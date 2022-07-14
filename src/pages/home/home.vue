@@ -7,10 +7,10 @@
 				</swiper-item>
 			</swiper>
    
-  {{systemStore.loadNumber}}
+  {{system.loadNumber}}
 	<button
 		hover-class="button-hover"
-		@click="systemStore.addLoadNumber()"
+		@click="system.addLoadNumber()"
 	>
 		调用pinia
 	</button>
@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { getGoodsList } from '@/api/test';
-import { systemStoreWithOut } from '@/stores/modules/system';
+import { systemStore } from '@/stores/system';
 import { onMounted } from 'vue';
 const swiperChange =()=>{
 
@@ -36,7 +36,7 @@ const swiperChange =()=>{
 onMounted(() => {
 	getGoodsList()
 })
-const systemStore = systemStoreWithOut();
+const system = systemStore();
 const carouselList = [{
 		src: "/static/banner3.jpg",
 		background: "rgb(203, 87, 60)",
