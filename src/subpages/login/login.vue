@@ -21,7 +21,7 @@
   </uni-popup>
 
   <!-- 注册部分 -->
-  <view class="example" v-if="showLogin">
+  <view class="example" v-if="showLogin || isAuthorize">
     <view class="flex">
       <uni-forms-item label="手机号码" required>
         <uni-easyinput v-model="number" placeholder="请输入手机号码" />
@@ -48,6 +48,7 @@
 </template>
 
 <script lang="ts" setup>
+//TODO 优化封装
 //需要判断是否注册 --判断 'scope.userInfo'是否授权---fou授权页面
 //是否授权
 import { useUserAuthSettingStore } from "@/stores/userAuthSetting";
@@ -56,7 +57,8 @@ import { onLoad } from "@dcloudio/uni-app";
 import { computed, ref } from "vue";
 
 onLoad(() => {
-  wx.login({
+  uni.login({
+    //建议多使用uni-app的参数 不要单独的小程序api  还要进行对比
     success: (res) => {
       if (res.code) {
         //微信登录成功 已拿到code
@@ -67,10 +69,10 @@ onLoad(() => {
             code: res.code, //wx.login 登录成功后的code
           },
           success: (cts) => {
-            // 换取成功后 暂存这些数据  留作后续操作  --等到的数据是加密的
+            // 换取成功后 暂存这些数据  留作后续操作  --等到的数据是加密的(储存再vuex里)
             // this.openid=cts.data.openid     //openid 用户唯一标识
             // this.unionid=cts.data.unionid     //unionid 开放平台唯一标识
-            // this.session_key=cts.data.session_key     //session_key  会话密钥
+            // this.session_key=cts.data.session_key     //session_key  会话密钥 --拿这个参数找后端要token
           },
         });
       } else {
@@ -102,13 +104,14 @@ const getPhoneClose = (e) => {
   phonePopup.value.close();
 };
 const goLogin = () => {
+  //之前授权过的话,判断是否登录, --再前面的显示部分就会去判断是否登录了
   //校验手机号
   //发送登录的接口
 };
 
 /*----授权部分-----*/
 const useUserInfo = useUserAuthSettingStore();
-const isAuthorize = computed(() => useUserInfo.hasAuth("scope.userInfo")); //是否授权
+const isAuthorize = computed(() => useUserInfo.hasAuth("scope.userInfo")); //是否授权--先授权才能获取用户信息uni.getUserInfo
 const userInfo = useUserInfoStore();
 const authorizePopup = ref();
 const isRegister = ref();
@@ -135,7 +138,9 @@ const img = computed(() => userInfo.avatarUrl);
 
 // 微信授权
 const getWechatUserInfo = () => {
+  //要先授权之后才能获取用户信息
   uni.getUserInfo({
+    //用户信息
     success: (res) => {
       console.log("3333", res.userInfo); //获取个人的信息
       userInfo.setUserInfo(res.userInfo);
