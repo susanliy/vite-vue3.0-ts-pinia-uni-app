@@ -1,6 +1,6 @@
 ## vite + vue3.0 + ts + vite + pinia + uni-app
 
-配置的插件
+基于 uni-app，一端发布多端通用，目前已经适配 H5、微信小程序、QQ小程序、Ios App、Android App
 sass
 
 ## 安装
